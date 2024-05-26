@@ -1,3 +1,4 @@
+import { UsersRepository } from '@/repositores/users-repository'
 import { hash } from 'bcryptjs'
 
 interface RegisterUserCaseProps {
@@ -7,9 +8,16 @@ interface RegisterUserCaseProps {
 }
 
 export class RegisterUserCase {
-  constructor(private usersRepository: any) {}
+  constructor(private usersRepository: UsersRepository) {}
 
   async execute({ name, email, password }: RegisterUserCaseProps) {
+
+    const userAlreadyExists = await this.usersRepository.findByEmail(email)
+
+    if (userAlreadyExists) {
+      throw new Error('E-mail already exists')
+    }
+
     const password_hash = await hash(password, 8)
 
     await this.usersRepository.create({

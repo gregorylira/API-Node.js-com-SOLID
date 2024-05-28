@@ -22,6 +22,12 @@ export class ValidateCheckInUseCase {
       throw new ResourceNotFoundError()
     }
 
+    const twentyMinutes = 20 * 60 * 1000
+
+    if (checkIn.created_at.getTime() + twentyMinutes < new Date().getTime()) {
+      throw new ResourceNotFoundError()
+    }
+
     checkIn.validated_at = new Date()
 
     await this.checkInsRepository.save(checkIn)

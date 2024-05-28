@@ -6,6 +6,12 @@ import { Decimal } from '@prisma/client/runtime/library'
 export class InMemoryGymsRepository implements GymsRepository {
   public gyms: Gym[] = []
 
+  async searchMany(query: string, page: number) {
+    return this.gyms
+      .filter((gym) => gym.title.includes(query))
+      .slice((page - 1) * 20, page * 20)
+  }
+
   async findById(id: string) {
     const gym = this.gyms.find((gym) => gym.id === id)
 

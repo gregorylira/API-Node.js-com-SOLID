@@ -14,9 +14,9 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
   try {
     const registerUseCase = makeRegisterUseCase()
     await registerUseCase.execute({ name, email, password })
-  } catch (err){
+  } catch (err) {
     if (err instanceof UserAlreadyExistsError) {
-      return reply.status(409).send({message: err.message})
+      return reply.status(409).send({ message: err.message })
     }
 
     throw err

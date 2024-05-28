@@ -1,5 +1,5 @@
-import { Gym } from "@prisma/client";
+import { Gym } from '@prisma/client'
 
 export interface GymsRepository {
-    findById(id:string): Promise<Gym | null>
+  findById(id: string): Promise<Gym | null>
 }

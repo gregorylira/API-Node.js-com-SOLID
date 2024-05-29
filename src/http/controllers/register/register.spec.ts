@@ -18,6 +18,6 @@ describe('Register Controller (e2e)', () => {
       password: 'any_password',
     })
 
-    expect(response.status).toEqual(201)
+    expect(response.statusCode).toEqual(201)
   })
 })

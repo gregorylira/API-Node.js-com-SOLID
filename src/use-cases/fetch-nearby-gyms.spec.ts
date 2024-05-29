@@ -1,15 +1,15 @@
 import { InMemoryGymsRepository } from '@/repositores/in-memory/in-memory-gyms-repository'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { FetchNearbyUseCase } from './fetch-nearby-gyms'
+import { FetchNearbyGymsUseCase } from './fetch-nearby-gyms'
 import { Decimal } from '@prisma/client/runtime/library'
 
 let gymsRepository: InMemoryGymsRepository
-let sut: FetchNearbyUseCase
+let sut: FetchNearbyGymsUseCase
 
 describe('Fetch Nearby Gyms Use Case', () => {
   beforeEach(() => {
     gymsRepository = new InMemoryGymsRepository()
-    sut = new FetchNearbyUseCase(gymsRepository)
+    sut = new FetchNearbyGymsUseCase(gymsRepository)
   })
 
   it('should be able to fetch nearby gyms', async () => {

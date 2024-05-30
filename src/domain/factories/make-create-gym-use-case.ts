@@ -1,4 +1,4 @@
-import { CreateGymUseCase } from '../cases/create-gym'
+import { CreateGymUseCase } from '../cases/create-gym/create-gym'
 import { PrismaGymsRepository } from '@/repositores/prisma/prisma-gyms-repository'
 
 export function makeCreateGymUseCase() {
